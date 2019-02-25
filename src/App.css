@@ -1,5 +1,60 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  background: #000000;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+
+.full-height {
+  height: 100%;
+}
+
 .App {
   text-align: center;
+}
+
+.st001 {
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 320px;
+  padding: 1rem;
+  border: 2px solid #000238;
+  border-radius: 15px;
+  text-align: center;
+  background: #95deff;  
+}
+
+.st002 {
+  background: #ECECEC;
+  padding: 30px;
+}
+
+.st003 {
+  border: 1px solid #c7c7c7;
+  border-radius: 5px;
+}
+
+.st004 {
+  text-align: right;
+  padding-bottom: 15px;
+}
+
+.st005{
+  background-color:rgba(0, 0, 0, 0);
+}
+
+.border-0 {
+  border: 0;
+}
+
+.padding-20px {
+  padding: 20px;
+}
+
+.backgroung-001529 {
+  background: #001529;
 }
 
 .App-logo {
@@ -20,7 +75,7 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: #61dbfb;
 }
 
 @keyframes App-logo-spin {
@@ -30,4 +85,35 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.font-white{
+  color: white;
+  font-weight: bold;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.color-white {
+  color: white;
+}
+
+.footer { 
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
