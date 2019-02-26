@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Table, Divider, Button, Modal, Switch, Tag  } from 'antd';
 import FormAddCar from './FormAddCar';
+//import Capitalize from './../service/Capitalize';
 
 const { Column } = Table;
 
@@ -40,17 +41,17 @@ class CarsList extends Component {
         });
     }
 
-    showDeleteConfirm(data,p) {
-        console.log(data);
+    showDeleteConfirm(p, id, ...data) {
+        //console.log(data);
         confirm({
             title: 'Deseas eliminar este registro?',
-            content: data,
+            content: `${data[0]} ${data[1]} de ${data[2]}`,
             okText: 'Si',
             okType: 'danger',
             cancelText: 'No',
             onOk() {
                 console.log('OK');
-                p.handleRemoveCar(data);
+                p.handleRemoveCar(id);
             },
             onCancel() {
                 console.log('Cancel');
@@ -99,7 +100,7 @@ class CarsList extends Component {
                                     <Button type="primary" disabled>Detalles</Button>
                                 }
                                 <Divider type="vertical" />
-                                <Button onClick={() => this.showDeleteConfirm(record.key, this.props)}  type="danger">
+                                <Button onClick={() => this.showDeleteConfirm(this.props, record.key, record.brand, record.year, record.madein,)}  type="danger">
                                     Eliminar
                                 </Button>
                             </span>

@@ -4,6 +4,7 @@ import Login from './components/login';
 import CarsList from './components/CarsList';
 import firebase from 'firebase';
 import { DB_CONFIG } from './config/config';
+import Capitalize from './service/Capitalize';
 import 'firebase/database';
 import './App.css';
 
@@ -35,9 +36,9 @@ class App extends Component {
     this.db.on('child_added', snap => {
       dataCars.push({
         key: snap.key,
-        brand: snap.val().brand,
+        brand: Capitalize(snap.val().brand),
         year: snap.val().year,
-        madein: snap.val().madein,
+        madein: Capitalize(snap.val().madein),
         maxspeed: snap.val().maxspeed,
         status: snap.val().status,
         description: snap.val().description,
@@ -80,7 +81,7 @@ class App extends Component {
   handleLogin(user) {
     this.setState({
       auth: true,
-      user
+      user: Capitalize(user)
     })
   }
 
