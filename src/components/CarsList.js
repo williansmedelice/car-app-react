@@ -70,7 +70,7 @@ class CarsList extends Component {
     render() {
         return(
             <div>
-                <Table dataSource={this.state.dataCars}>
+                <Table dataSource={this.state.dataCars} scroll={{ x: 1300 }}>
                     <Column title="Marca" dataIndex="brand" key="brand" />
                     <Column title="Año de fabricación" dataIndex="year" key="year" />
                     <Column title="Origen (País)" dataIndex="madein" key="madein" />

@@ -138,8 +138,8 @@ class App extends Component {
                   </div>
                 </div>
                 <div className="st004">
-                  <Button type="primary" onClick={this.handleLogout}>
-                      Cerrar sesión <Icon type="logout" />
+                  <Button type="primary" title="Cerrar sesión" onClick={this.handleLogout}>
+                       <Icon type="logout" />
                   </Button>
                 </div>
                 <Card title="Lista de Carros">
