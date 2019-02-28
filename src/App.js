@@ -11,7 +11,7 @@ import 'moment/locale/es';
 import 'firebase/database';
 import './App.css';
 
-const {Header, Content} = Layout;
+const {Header, Content } = Layout;
 
 class App extends Component {
   constructor(props) {
@@ -160,12 +160,13 @@ class App extends Component {
     const { auth, user, dataCars, fechaActual } = this.state;
     return(
         <Layout className="st005">
+          <div>
           <Header>
-            <span className="font-white font-Carter-One">Car App</span>
+            <span className="font-white">Car App</span>
             {(!auth) ?
               "" :
               <div className="inline paddin-left-right-10px">
-                <div className="facet_sidebar inline">
+                <div className="facet_sidebar inline float-right margin-right-20px">
                   <FormAddCar handleAddCar={this.handleAddCar}/>
                   <Button type="primary" title="Cerrar sesión" onClick={this.handleLogout}>
                     <Icon type="logout" />
@@ -195,21 +196,24 @@ class App extends Component {
               </div>
             }
           </Header>
+          </div>
+          <div>
           <Content>
             {(!auth) ? 
-              <div className="st001 textformlogin">
+              <div className="st001">
                 <div className="text-center padding-20px">
                   <Avatar size={64} icon="user" className="boxshadow-001" />
-                  <h2 className="font-Carter-One textshadow-001">Bienvenido</h2>
+                  <h2>Bienvenido</h2>
                 </div>
                 <Login handleLogin={this.handleLogin}></Login>
               </div> :
+              <Card className="st006">
               <div className="st002">
                 <div className="text-center">
                   <Avatar size={64} icon="user" className="boxshadow-001" />
                   <div className="text-center">
-                    <h2 className="font-Carter-One textshadow-002 color-white">Bienvenido {user}</h2>
-                    <h4 className="font-Carter-One textshadow-002 color-white">Hoy es {fechaActual}</h4>                    
+                    <h2>Bienvenido {user}</h2>
+                    <h4>Hoy es {fechaActual}</h4>                    
                   </div>
                 </div>
 
@@ -223,8 +227,10 @@ class App extends Component {
                   </CarsList>
                 </Card>                
               </div>
+              </Card>
             }
           </Content>
+          </div>
           {/*<div className="footer">
             <Footer className="text-center backgroung-001529 color-white">Car App, ©2019 Created by Willians Medelice</Footer>
           </div>*/}

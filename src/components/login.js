@@ -46,7 +46,7 @@ class Login extends Component {
                 )}
                 </Form.Item>
                 <Form.Item>
-                <Button type="primary" htmlType="submit" className="login-form-button boxshadow-002"><span className="font-Carter-One textshadow-002">Iniciar sesión</span> <Icon type="login" /></Button>
+                <Button type="primary" htmlType="submit" className="login-form-button boxshadow-002"><span className="textshadow-002">Iniciar sesión</span> <Icon type="login" /></Button>
                 </Form.Item>
             </Form>
         );

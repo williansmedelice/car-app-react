@@ -1,6 +1,10 @@
 html, body {
   height: 100%;
   margin: 0;
+  background-color: #f8f8f8;
+    background-image: url("img/bg01.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .full-height {
@@ -20,15 +24,15 @@ html, body {
   /*border: 2px solid #000238;*/
   border-radius: 15px;
   text-align: center;
-  /*background: #95deff;*/
+  background: #95deff;
   -webkit-box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.75);
   box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.75);  
 }
 
 .st002 {
-  /*background: #ECECEC;*/
-  padding: 30px;
+  background: #ECECEC;
+  padding: 18px;
 }
 
 .st003 {
@@ -41,8 +45,12 @@ html, body {
   padding-bottom: 15px;
 }
 
-.st005{
+.st005 {
   background-color:rgba(0, 0, 0, 0);
+}
+
+.st006 {
+  background: #ECECEC;
 }
 
 .border-0 {
@@ -172,6 +180,9 @@ html, body {
   display: none;
   margin-right: -20px;
 }
+.margin-right-20px {
+  margin-right: -20px;
+}
 
 @media (max-width: 600px) {
   .facet_sidebar {
@@ -187,7 +198,6 @@ html, body {
   }
 
 }
-
 
 @media (max-width: 1000px) {
   .st001 {

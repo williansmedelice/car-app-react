@@ -23,6 +23,10 @@ class CarsList extends Component {
         this.handleUpdateDataCar = this.handleUpdateDataCar.bind(this);
     }
 
+    componentDidMount() {
+       window.document.body.style.backgroundColor = "#ECECEC";
+    }
+
     info(data) {
         Modal.info({
           title: 'Detalles del Carro',
@@ -93,19 +97,41 @@ class CarsList extends Component {
                     onChange={this.handleChange} 
                     pagination={{ pageSize: 5 }} 
                     >
-                    <Column title="Marca" dataIndex="brand" key="brand" 
-                        sorter={(a, b) => a.brand.length - b.brand.length} sortOrder={sortedInfo.columnKey === 'brand' && sortedInfo.order} />
-                    <Column title="Año de fabricación" dataIndex="year" key="year" 
-                        sorter={(a, b) => a.year - b.year} sortOrder={sortedInfo.columnKey === 'year' && sortedInfo.order} className="text-center" />
-                    <Column title="País de origen" dataIndex="madein" key="madein" className="text-center"
-                        sorter={(a, b) => a.madein.length - b.madein.length} sortOrder={sortedInfo.columnKey === 'madein' && sortedInfo.order} />
-                    <Column title="Velocidad Máxima km/h" dataIndex="maxspeed" key="maxspeed" className="text-center" 
+                    <Column 
+                        title={"Marca"} 
+                        dataIndex="brand" 
+                        key="brand" 
+                        sorter={(a, b) => a.brand.length - b.brand.length} 
+                        sortOrder={sortedInfo.columnKey === 'brand' && sortedInfo.order} 
+                    />
+                    <Column 
+                        title={<div className="text-center">Año de fabricación</div>}
+                        dataIndex="year" 
+                        key="year" 
+                        sorter={(a, b) => a.year - b.year} 
+                        sortOrder={sortedInfo.columnKey === 'year' && sortedInfo.order} 
+                        className="text-center" 
+                    />
+                    <Column 
+                        title={<div className="text-center">País de origen</div>} 
+                        dataIndex="madein" 
+                        key="madein" 
+                        className="text-center"
+                        sorter={(a, b) => a.madein.length - b.madein.length} 
+                        sortOrder={sortedInfo.columnKey === 'madein' && sortedInfo.order} 
+                    />
+                    <Column 
+                        title={<div className="text-center">Velocidad Máxima km/h</div>}
+                        dataIndex="maxspeed" 
+                        key="maxspeed" 
+                        className="text-center" 
                         render={(text, record) => (
                             <span>
                               {record.maxspeed} km/h  
                             </span>
                         )}
-                        sorter={(a, b) => a.maxspeed - b.maxspeed} sortOrder={sortedInfo.columnKey === 'maxspeed' && sortedInfo.order}
+                        sorter={(a, b) => a.maxspeed - b.maxspeed} 
+                        sortOrder={sortedInfo.columnKey === 'maxspeed' && sortedInfo.order}
                     />
                     <Column
                         title={<div className="text-center">Estado</div>}
