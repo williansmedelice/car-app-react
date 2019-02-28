@@ -1,0 +1,16 @@
+html, body {
+    overflow-y: hidden ! important;
+    overflow-x: hidden ! important;
+    background-color: #f8f8f8;
+    background-image: url("../img/bg01.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;    
+}
+
+.font-Carter-One{
+    font-family: 'Carter One', cursive;
+}
+
+.textformlogin {
+    background-image: url("../img/textformlogin.png");
+}

@@ -35,18 +35,18 @@ class Login extends Component {
                 {getFieldDecorator('userName', {
                     rules: [{ required: true, message: 'Por favor ingrese su nombre de usuario!' }],
                 })(
-                    <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Usuario" />
+                    <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Usuario" className="boxshadow-002" />
                 )}
                 </Form.Item>
                 <Form.Item>
                 {getFieldDecorator('password', {
                     rules: [{ required: true, message: 'Por favor ingrese su contraseña!' }],
                 })(
-                    <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Contraseña" />
+                    <Input.Password prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Contraseña" className="boxshadow-002" />
                 )}
                 </Form.Item>
                 <Form.Item>
-                <Button type="primary" htmlType="submit" className="login-form-button">Iniciar sesión <Icon type="login" /></Button>
+                <Button type="primary" htmlType="submit" className="login-form-button boxshadow-002"><span className="font-Carter-One textshadow-002">Iniciar sesión</span> <Icon type="login" /></Button>
                 </Form.Item>
             </Form>
         );

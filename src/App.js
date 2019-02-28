@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import { Layout, Card, Button, Icon, Avatar  } from 'antd';
-import Login from './components/login';
+import { Layout, Card, Button, Icon, Avatar, Drawer  } from 'antd';
+import Login from './components/Login';
+import FormAddCar from './components/FormAddCar'
 import CarsList from './components/CarsList';
 import firebase from 'firebase';
 import { DB_CONFIG } from './config/config';
 import Capitalize from './service/Capitalize';
+import Moment from 'moment';
+import 'moment/locale/es';
 import 'firebase/database';
 import './App.css';
 
@@ -16,7 +19,9 @@ class App extends Component {
     this.state = {
         auth: false,
         user: '',
-        dataCars: []
+        dataCars: [],
+        fechaActual:  Moment().format('D ') + Capitalize(Moment().format('MMMM ')) + Moment().format('YYYY'),
+        visible: false,
     };
 
     this.handleLogin = this.handleLogin.bind(this);
@@ -24,6 +29,7 @@ class App extends Component {
     this.handleAddCar = this.handleAddCar.bind(this);
     this.handleRemoveCar = this.handleRemoveCar.bind(this);
     this.handleUpdateCar = this.handleUpdateCar.bind(this);
+    this.handleUpdateDataCar =this.handleUpdateDataCar.bind(this);
 
     this.app = firebase.initializeApp(DB_CONFIG);
     this.db = this.app.database().ref().child('cars');
@@ -68,7 +74,14 @@ class App extends Component {
     this.db.on('child_changed', snap => {
       for(let i = 0; i < dataCars.length; i++){
         if(dataCars[i].key === snap.key){
+          dataCars[i].brand = snap.val().brand;
+          dataCars[i].year = snap.val().year;
+          dataCars[i].madein = snap.val().madein;
+          dataCars[i].maxspeed = snap.val().maxspeed;
           dataCars[i].status = snap.val().status;
+          dataCars[i].description = snap.val().description;
+          dataCars[i].colors = snap.val().colors;
+          dataCars[i].quantify = snap.val().quantify;
         }
       }
       this.setState({
@@ -88,7 +101,8 @@ class App extends Component {
   handleLogout() {
     this.setState({
       auth: false,
-      user:''
+      user:'',
+      visible: false
     })
   }
 
@@ -116,34 +130,97 @@ class App extends Component {
     this.db.child(id).update({status:status});
   }
 
+  //Metodo para actualizar cambios en edicion de un carro
+  handleUpdateDataCar(dataCarEdit, id) {
+    this.db.child(id).update({
+      brand: dataCarEdit.brand,
+      year: dataCarEdit.year,
+      madein: dataCarEdit.madein,
+      maxspeed: dataCarEdit.maxspeed,
+      status: dataCarEdit.status,
+      description: dataCarEdit.description,
+      colors: dataCarEdit.colors,
+      quantify: dataCarEdit.quantify
+    });
+  }
+
+  showDrawer = () => {
+    this.setState({
+      visible: true,
+    });
+  };
+
+  onClose = () => {
+    this.setState({
+      visible: false,
+    });
+  };
+
   render() {
-    const { auth, user, dataCars } = this.state;
+    const { auth, user, dataCars, fechaActual } = this.state;
     return(
         <Layout className="st005">
-          <Header><span className="font-white">Car App</span></Header>
+          <Header>
+            <span className="font-white font-Carter-One">Car App</span>
+            {(!auth) ?
+              "" :
+              <div className="inline paddin-left-right-10px">
+                <div className="facet_sidebar inline">
+                  <FormAddCar handleAddCar={this.handleAddCar}/>
+                  <Button type="primary" title="Cerrar sesión" onClick={this.handleLogout}>
+                    <Icon type="logout" />
+                  </Button>
+                </div>
+                <div className="float-right display-001">
+                  <Button type="primary" title="Desplegar Menú" onClick={this.showDrawer}>
+                    <Icon type="menu-fold" />
+                  </Button>
+                </div>
+                <Drawer
+                  title="Menú"
+                  placement="right"
+                  closable={false}
+                  onClose={this.onClose}
+                  visible={this.state.visible}
+                >
+                  
+                  <div className="margin-left-10px" ><FormAddCar handleAddCar={this.handleAddCar}/></div>
+                  
+                  <p>
+                    <Button type="primary" title="Cerrar sesión" onClick={this.handleLogout}>
+                      Cerrar Sesión <Icon type="logout" />
+                    </Button>
+                  </p>
+                </Drawer>
+              </div>
+            }
+          </Header>
           <Content>
             {(!auth) ? 
-              <div className="st001">
+              <div className="st001 textformlogin">
                 <div className="text-center padding-20px">
-                  <Avatar size={64} icon="user" />
-                  <h2>Bienvenido</h2>
+                  <Avatar size={64} icon="user" className="boxshadow-001" />
+                  <h2 className="font-Carter-One textshadow-001">Bienvenido</h2>
                 </div>
                 <Login handleLogin={this.handleLogin}></Login>
               </div> :
               <div className="st002">
                 <div className="text-center">
-                  <Avatar size={64} icon="user" />
+                  <Avatar size={64} icon="user" className="boxshadow-001" />
                   <div className="text-center">
-                    <h2>Bienvenido {user}</h2>
+                    <h2 className="font-Carter-One textshadow-002 color-white">Bienvenido {user}</h2>
+                    <h4 className="font-Carter-One textshadow-002 color-white">Hoy es {fechaActual}</h4>                    
                   </div>
                 </div>
-                <div className="st004">
-                  <Button type="primary" title="Cerrar sesión" onClick={this.handleLogout}>
-                       <Icon type="logout" />
-                  </Button>
-                </div>
-                <Card title="Lista de Carros">
-                  <CarsList handleAddCar={this.handleAddCar} handleRemoveCar={this.handleRemoveCar} handleUpdateCar={this.handleUpdateCar} dataCars={dataCars}></CarsList>
+
+                <Card title="Lista de Vehículos">
+                  <CarsList 
+                    handleRemoveCar={this.handleRemoveCar} 
+                    handleUpdateCar={this.handleUpdateCar} 
+                    dataCars={dataCars}
+                    handleUpdateDataCar={this.handleUpdateDataCar}
+                  >
+                  </CarsList>
                 </Card>                
               </div>
             }
