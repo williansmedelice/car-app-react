@@ -89,7 +89,7 @@ class CarsList extends Component {
             <div>
                 <Table 
                     dataSource={this.state.dataCars} 
-                    scroll={{ y:240, x: 1300 }} 
+                    scroll={{  x: 1300 }} 
                     onChange={this.handleChange} 
                     pagination={{ pageSize: 5 }} 
                     >
