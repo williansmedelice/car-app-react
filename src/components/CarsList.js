@@ -87,7 +87,12 @@ class CarsList extends Component {
         sortedInfo = sortedInfo || {};
         return(
             <div>
-                <Table dataSource={this.state.dataCars} scroll={{ x: 1300 }} onChange={this.handleChange}>
+                <Table 
+                    dataSource={this.state.dataCars} 
+                    scroll={{ y:240, x: 1300 }} 
+                    onChange={this.handleChange} 
+                    pagination={{ pageSize: 5 }} 
+                    >
                     <Column title="Marca" dataIndex="brand" key="brand" 
                         sorter={(a, b) => a.brand.length - b.brand.length} sortOrder={sortedInfo.columnKey === 'brand' && sortedInfo.order} />
                     <Column title="Año de fabricación" dataIndex="year" key="year" 

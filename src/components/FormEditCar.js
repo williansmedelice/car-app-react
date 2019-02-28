@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Modal, Form, Input, Icon, Radio, message } from 'antd';
+import { Button, Modal, Form, Input, Icon, Radio, message, InputNumber } from 'antd';
 
 const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
     class FormCar extends Component {
@@ -55,7 +55,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                   initialValue: dataCar.maxspeed,
                   rules: [{ required: true, message: 'Campo Velocidad máxima Requerido!' }],
                 })(
-                  <Input />
+                    <InputNumber min={0} max={1500} />
                 )}
               </Form.Item>
               <Form.Item className="collection-create-form_last-form-item">
