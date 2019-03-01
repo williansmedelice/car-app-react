@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Layout, Card, Button, Icon, Avatar, Drawer  } from 'antd';
 import Login from './components/login';
 import FormAddCar from './components/FormAddCar'
-import CarsList from './components/CarsList';
+//import CarsList from './components/CarsList';
+import ListCars from './components/ListCars';
 import firebase from 'firebase';
 import { DB_CONFIG } from './config/config';
 import Capitalize from './service/Capitalize';
@@ -218,13 +219,19 @@ class App extends Component {
                 </div>
 
                 <Card title="Lista de Vehículos">
-                  <CarsList 
+                  {/*<CarsList 
                     handleRemoveCar={this.handleRemoveCar} 
                     handleUpdateCar={this.handleUpdateCar} 
                     dataCars={dataCars}
                     handleUpdateDataCar={this.handleUpdateDataCar}
                   >
-                  </CarsList>
+                  </CarsList>*/}
+                  <ListCars
+                    handleRemoveCar={this.handleRemoveCar} 
+                    handleUpdateCar={this.handleUpdateCar} 
+                    dataCars={dataCars}
+                    handleUpdateDataCar={this.handleUpdateDataCar} 
+                  />
                 </Card>                
               </div>
               </Card>

@@ -149,10 +149,11 @@ class CarsList extends Component {
                         key="action"
                         render={(text, record) => (
                             <span>
-                                {(record.status) ? 
+                                {/*{(record.status) ? 
                                     <Switch title="Desactivar" defaultChecked  onChange={(checked) => this.onChangeStatusCar(checked, record.key)} /> : 
                                     <Switch title="Activar" onChange={(checked) => this.onChangeStatusCar(checked, record.key)} />
-                                }
+                                }*/console.log(record.status)}
+                                <Switch defaultChecked={record.status} onChange={(checked) => this.onChangeStatusCar(checked, record.key)} />
                                 <Divider type="vertical" />
                                 {(record.status) ?
                                     <Button title="Detalles" type="primary" onClick={() => this.info(text)} shape="circle">

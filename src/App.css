@@ -184,6 +184,13 @@ html, body {
   margin-right: -20px;
 }
 
+.vertical-align-middle {
+  vertical-align: middle;
+}
+.margin-top-10px{
+  margin-top: 10px;
+}
+
 @media (max-width: 600px) {
   .facet_sidebar {
     display: none;
